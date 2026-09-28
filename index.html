@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="Three desks at the back of the room, and the office guest wifi.">
-<meta property="og:title" content="The Backrow Boys">
-<meta property="og:description" content="Three desks at the back of the room, and the office guest wifi.">
+<meta name="description" content="Four desks at the back of the room, and the office guest wifi.">
+<meta property="og:title" content="The Backrow Boys +1">
+<meta property="og:description" content="Four desks at the back of the room, and the office guest wifi.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129681;</text></svg>">
 <style>
@@ -19,7 +19,7 @@
   img { max-width: 100%; }
   [hidden] { display: none !important; }
 </style>
-<title>The Backrow Boys</title>
+<title>The Backrow Boys +1</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;700&family=Public+Sans:wght@400;600&display=swap">
 <style>
@@ -113,6 +113,23 @@
     color: var(--accent);
     margin-bottom: 0.65em;
   }
+  .masthead h1 .plus {
+    display: inline-block;
+    font-size: 0.5em;
+    line-height: 1;
+    padding: 0.12em 0.22em 0.08em;
+    margin-left: 0.08em;
+    vertical-align: 0.42em;
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: 4px;
+    transform: rotate(-7deg);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .masthead h1 .plus { animation: slap 380ms cubic-bezier(.3,1.6,.5,1) 1100ms backwards; }
+    @keyframes slap { from { transform: rotate(-24deg) scale(2.2); opacity: 0; } }
+  }
   .tagline {
     font-size: 17px;
     color: var(--muted);
@@ -145,7 +162,7 @@
   }
   .row {
     display: grid;
-    grid-template-columns: 26px repeat(3, 1fr);
+    grid-template-columns: 26px repeat(4, 1fr);
     gap: 7px;
     align-items: stretch;
   }
@@ -177,12 +194,25 @@
     line-height: 1;
   }
   .row.back .row-no { color: var(--ink); font-weight: 700; }
+  .desk.late { position: relative; }
+  .desk.late::after {
+    content: "+1";
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
   @media (prefers-reduced-motion: no-preference) {
     .desk.taken { animation: seat 460ms cubic-bezier(.2,.8,.3,1) backwards; }
-    .desk.taken:nth-of-type(1) { animation-delay: 140ms; }
-    .desk.taken:nth-of-type(2) { animation-delay: 240ms; }
-    .desk.taken:nth-of-type(3) { animation-delay: 340ms; }
+    .desk.taken:nth-of-type(3) { animation-delay: 140ms; }
+    .desk.taken:nth-of-type(4) { animation-delay: 240ms; }
+    .desk.taken:nth-of-type(5) { animation-delay: 340ms; }
+    .desk.taken.late { animation: pull-up 520ms cubic-bezier(.2,.8,.3,1) 820ms backwards; }
     @keyframes seat { from { transform: translateY(8px); opacity: 0; } }
+    @keyframes pull-up { from { transform: translateX(-40px) rotate(-4deg); opacity: 0; } }
   }
 
   /* ---------- roster ---------- */
@@ -196,7 +226,7 @@
 
   .roster {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
   .card {
@@ -248,7 +278,7 @@
   /* ---------- dietary ---------- */
   .diet {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
   .diet .card { gap: 12px; }
@@ -364,25 +394,26 @@
 <div class="wrap">
 
   <header class="masthead">
-    <h1><span class="the">Est. 2026</span>The Backrow Boys</h1>
-    <p class="tagline">Three desks at the back of the room, one whispered running commentary, and no intention of moving up.</p>
+    <h1><span class="the">Est. 2026</span>The Backrow Boys&nbsp;<span class="plus">+1</span></h1>
+    <p class="tagline">Three desks at the back of the room. Then a fourth. One whispered running commentary, and no intention of moving up.</p>
     <div class="charter-strip">
-      <span>Members: 3</span>
+      <span>Members: 3 + 1</span>
       <span>Row: 3 of 3</span>
       <span>Front-row transfers: 0</span>
-      <span>Applications: closed</span>
+      <span>Applications: closed (reopened once)</span>
     </div>
   </header>
 
   <section class="chart" aria-label="Seating chart">
     <div class="rows">
-      <div class="row"><span class="row-no">1</span><span class="desk"></span><span class="desk"></span><span class="desk"></span></div>
-      <div class="row"><span class="row-no">2</span><span class="desk"></span><span class="desk"></span><span class="desk"></span></div>
+      <div class="row"><span class="row-no">1</span><span class="desk"></span><span class="desk"></span><span class="desk"></span><span class="desk"></span></div>
+      <div class="row"><span class="row-no">2</span><span class="desk"></span><span class="desk"></span><span class="desk"></span><span class="desk"></span></div>
       <div class="row back">
         <span class="row-no">3</span>
-        <span class="desk taken"><span>Matt</span></span>
-        <span class="desk taken"><span>Aakash</span></span>
+        <span class="desk taken late"><span>Lily</span></span>
         <span class="desk taken"><span>Marc</span></span>
+        <span class="desk taken"><span>Aakash</span></span>
+        <span class="desk taken"><span>Matt</span></span>
       </div>
     </div>
   </section>
@@ -396,17 +427,17 @@
       <article class="card">
         <div>
           <p class="seat-tag">SEAT A3</p>
-          <p class="name">Matt</p>
+          <p class="name">Lily</p>
         </div>
         <dl class="stats">
-          <dt>Tenure</dt><dd>Founding</dd>
-          <dt>Side comments</dt><dd>∞</dd>
+          <dt>Tenure</dt><dd>The +1</dd>
+          <dt>Side comments</dt><dd>Already ∞</dd>
         </dl>
       </article>
       <article class="card">
         <div>
           <p class="seat-tag">SEAT B3</p>
-          <p class="name">Aakash</p>
+          <p class="name">Marc</p>
         </div>
         <dl class="stats">
           <dt>Tenure</dt><dd>Founding</dd>
@@ -416,7 +447,17 @@
       <article class="card">
         <div>
           <p class="seat-tag">SEAT C3</p>
-          <p class="name">Marc</p>
+          <p class="name">Aakash</p>
+        </div>
+        <dl class="stats">
+          <dt>Tenure</dt><dd>Founding</dd>
+          <dt>Side comments</dt><dd>∞</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <div>
+          <p class="seat-tag">SEAT D3</p>
+          <p class="name">Matt</p>
         </div>
         <dl class="stats">
           <dt>Tenure</dt><dd>Founding</dd>
@@ -435,16 +476,26 @@
       <article class="card">
         <div>
           <p class="seat-tag">SEAT A3</p>
-          <p class="name">Matt</p>
+          <p class="name">Lily</p>
         </div>
         <dl class="menu">
-          <dt>Loves</dt><dd>PB&amp;J. His one true love.</dd>
+          <dt>Loves</dt><dd class="none">Under investigation</dd>
           <dt>Restrictions</dt><dd class="none">None on record</dd>
         </dl>
       </article>
       <article class="card">
         <div>
           <p class="seat-tag">SEAT B3</p>
+          <p class="name">Marc</p>
+        </div>
+        <dl class="menu">
+          <dt>Loves</dt><dd>Salads that resemble pyramids</dd>
+          <dt>Restrictions</dt><dd class="none">None on record</dd>
+        </dl>
+      </article>
+      <article class="card">
+        <div>
+          <p class="seat-tag">SEAT C3</p>
           <p class="name">Aakash</p>
         </div>
         <dl class="menu">
@@ -454,11 +505,11 @@
       </article>
       <article class="card">
         <div>
-          <p class="seat-tag">SEAT C3</p>
-          <p class="name">Marc</p>
+          <p class="seat-tag">SEAT D3</p>
+          <p class="name">Matt</p>
         </div>
         <dl class="menu">
-          <dt>Loves</dt><dd>Salads that resemble pyramids</dd>
+          <dt>Loves</dt><dd>PB&amp;J. His one true love.</dd>
           <dt>Restrictions</dt><dd class="none">None on record</dd>
         </dl>
       </article>
@@ -481,6 +532,7 @@
 
   <footer>
     <span>Stats unverified</span>
+    <span>Name under review</span>
     <span>No affiliation with the front row</span>
   </footer>
 
