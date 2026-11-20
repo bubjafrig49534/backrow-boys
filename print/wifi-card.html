@@ -64,7 +64,7 @@
     line-height: 0.96;
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    margin: 0.28in 0 0;
+    margin: 0.22in 0 0;
   }
 
   .sub {
@@ -76,9 +76,9 @@
 
   /* --- QR --- */
   .qr {
-    width: 2.15in;
-    height: 2.15in;
-    margin-top: 0.24in;
+    width: 1.9in;
+    height: 1.9in;
+    margin-top: 0.2in;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +102,8 @@
     margin-top: 0.05in;
   }
 
+  .network .pw-label { margin-top: 0.12in; }
+
   .network .link {
     font-family: "JetBrains Mono", ui-monospace, monospace;
     font-size: 9pt;
@@ -112,6 +114,7 @@
   /* --- footer: the three seats --- */
   .foot {
     margin-top: auto;
+    padding-top: 0.18in;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -140,13 +143,15 @@
     <div class="rule"></div>
 
     <h1>Guest<br>Wifi</h1>
-    <p class="sub">Scan the code to get on the wifi.</p>
+    <p class="sub">Scan the code, or type the password on a laptop.</p>
 
     <div class="qr" id="qr"></div>
 
     <div class="network">
       <div class="label">Network</div>
       <div class="ssid">Plastic Labs-Guest</div>
+      <div class="label pw-label">Password</div>
+      <div class="ssid" id="pw"></div>
     </div>
 
     <div class="foot">
@@ -164,6 +169,7 @@
     security: "WPA"
   };
   function esc(s) { return String(s).replace(/([\\;,:"])/g, "\\$1"); }
+  document.getElementById("pw").textContent = WIFI.password;
   var payload = "WIFI:T:" + WIFI.security + ";S:" + esc(WIFI.ssid) + ";P:" + esc(WIFI.password) + ";;";
   // Q (25% recovery) keeps the dense wifi payload from needing a huge code.
   var qr = qrcode(0, "Q");
