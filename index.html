@@ -368,6 +368,7 @@
     overflow-wrap: break-word;
     line-height: 1.45;
   }
+  #pass { user-select: all; -webkit-user-select: all; }
   .creds dd.unset { color: var(--muted); font-weight: 400; }
   .fine { font-size: 13px; color: var(--muted); margin: 0; }
   @media (max-width: 560px) {
@@ -523,9 +524,10 @@
         <p class="eyebrow">Guest network</p>
         <h2>Scan it, sit wherever</h2>
       </div>
-      <p class="fine">Point a camera at the code and the phone joins on its own. No typing, no asking.</p>
+      <p class="fine">Point a phone camera at the code and it joins on its own. On a laptop, pick the network and type the password.</p>
       <dl class="creds">
         <dt>Network</dt><dd id="ssid" class="unset">not set yet</dd>
+        <dt>Password</dt><dd id="pass" class="unset">not set yet</dd>
       </dl>
     </div>
   </section>
@@ -558,6 +560,10 @@
 
     ssidEl.textContent = WIFI.ssid;
     ssidEl.classList.remove("unset");
+
+    var passEl = document.getElementById("pass");
+    passEl.textContent = open ? "none" : WIFI.password;
+    passEl.classList.remove("unset");
 
     function esc(s) { return String(s).replace(/([\;,:"])/g, "\\$1"); }
     var payload = "WIFI:T:" + (open ? "nopass" : WIFI.security) +
